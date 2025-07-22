@@ -25,7 +25,7 @@ export const deepEquals = (a: unknown, b: unknown): boolean => {
 
     // 각 키의 값 비교
     return aKeys.every(
-      (key) => b.hasOwnProperty(key) && deepEquals(a[key as keyof typeof a], b[key as keyof typeof b]),
+      (key) => Object.hasOwn(b, key) && deepEquals(a[key as keyof typeof a], b[key as keyof typeof b]),
     );
   }
 

@@ -18,7 +18,7 @@ export const shallowEquals = (a: unknown, b: unknown) => {
 
     // 각 key의 값이 === 인지 확인
     for (const key of aKeys) {
-      if (!b.hasOwnProperty(key)) return false;
+      if (!Object.hasOwn(b, key)) return false;
       if (a[key as keyof typeof a] !== b[key as keyof typeof b]) return false;
     }
 
