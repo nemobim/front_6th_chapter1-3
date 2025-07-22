@@ -14,7 +14,7 @@ export const useAutoCallback = <T extends AnyFunction>(fn: T): T => {
   ref.current = fn;
 
   // 함수 참조가 변경되지 않으면서 항상 새로운 값을 참조하는 훅
-  const callback = useCallback((...args: unknown[]) => {
+  const callback = useCallback((...args: Parameters<T>) => {
     return ref.current(...args);
   }, []);
 
