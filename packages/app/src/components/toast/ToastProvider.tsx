@@ -38,7 +38,7 @@ export const ToastProvider = memo(({ children }: PropsWithChildren) => {
   const { show, hide } = useMemo(() => createActions(dispatch), [dispatch]);
   const visible = state.message !== "";
 
-  const hideAfter = useAutoCallback(() => debounce(hide, DEFAULT_DELAY));
+  const hideAfter = useMemo(() => debounce(hide, DEFAULT_DELAY), [hide]);
   const showWithHide: ShowToast = useAutoCallback((...args) => {
     show(...args);
     hideAfter();
